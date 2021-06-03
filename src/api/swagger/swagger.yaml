@@ -106,4 +106,86 @@ paths:
           description: Success
           schema:
             type: object
+  
+  /test:
+    x-swagger-router-controller: test
+    get:
+      x-ims-anonymous : true
+      description: Use this to send a GET call.
+      operationId: getTest
+      tags : [ Test ]
+      responses:
+        200:
+          description: Success
+          schema:
+            type: object
+    post:
+      x-ims-anonymous : true
+      description: Use this to send a POST call. (Nothing is done to the sent data).
+      operationId: postTest
+      tags : [ Test ]
+      parameters:
+        - in: query
+          name: testNumber
+          type: number
+          # required: false
+          description: Enter a number here.
+      responses:
+        201:
+          description: Success
+          schema:
+            type: object
+    put:
+      x-ims-anonymous : true
+      description: Use this to send a PATCH call. (Nothing is done to the sent data).
+      operationId: putTest
+      tags : [ Test ]
+      parameters:
+        - in: query
+          name: oldTestNumber
+          type: number
+          description: Enter the old number here.
+        - in: query
+          name: newTestNumber
+          type: number
+          description: Enter the new number here.
+      responses:
+        204:
+          description: Success
+          schema:
+            type: object
+    patch:
+      x-ims-anonymous : true
+      description: Use this to send a PATCH call. (Nothing is done to the sent data).
+      operationId: patchTest
+      tags : [ Test ]
+      parameters:
+        - in: query
+          name: oldTestNumber
+          type: number
+          description: Enter the old number here.
+        - in: query
+          name: newTestNumber
+          type: number
+          description: Enter the new number here.
+      responses:
+        204:
+          description: Success
+          schema:
+            type: object
+    delete:
+      x-ims-anonymous : true
+      description: Use this to send a DELETE call. (Nothing is done to the sent data).
+      operationId: deleteTest
+      tags : [ Test ]
+      parameters:
+        - in: query
+          name: testNumber
+          type: number
+          description: Enter a number here.
+      responses:
+        204:
+          description: Success
+          schema:
+            type: object
           
