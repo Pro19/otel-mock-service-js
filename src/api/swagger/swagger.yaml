@@ -1,0 +1,109 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Mock Service
+
+basePath: /api/mockservice
+
+consumes:
+  - application/json
+
+produces:
+  - application/json
+  - text/html
+paths:
+  /health:
+    x-swagger-router-controller: health
+    get:
+      x-ims-anonymous : true
+      description: Use this to check health status of service
+      operationId: getHealth
+      tags : [ Health ]
+      responses:
+        200:
+          description: Success
+          schema:
+            type: string
+  
+  /hitMe:
+    x-swagger-router-controller: hitMe
+    get:
+      x-ims-anonymous : true
+      description: Use this to send a GET call.
+      operationId: getHitMe
+      tags : [ HitMe ]
+      responses:
+        200:
+          description: Success
+          schema:
+            type: object
+    post:
+      x-ims-anonymous : true
+      description: Use this to send a POST call. (Nothing is done to the sent data).
+      operationId: postHitMe
+      tags : [ HitMe ]
+      parameters:
+        - in: query
+          name: testNumber
+          type: number
+          # required: false
+          description: Enter a number here.
+      responses:
+        201:
+          description: Success
+          schema:
+            type: object
+    put:
+      x-ims-anonymous : true
+      description: Use this to send a PATCH call. (Nothing is done to the sent data).
+      operationId: putHitMe
+      tags : [ HitMe ]
+      parameters:
+        - in: query
+          name: oldTestNumber
+          type: number
+          description: Enter the old number here.
+        - in: query
+          name: newTestNumber
+          type: number
+          description: Enter the new number here.
+      responses:
+        204:
+          description: Success
+          schema:
+            type: object
+    patch:
+      x-ims-anonymous : true
+      description: Use this to send a PATCH call. (Nothing is done to the sent data).
+      operationId: patchHitMe
+      tags : [ HitMe ]
+      parameters:
+        - in: query
+          name: oldTestNumber
+          type: number
+          description: Enter the old number here.
+        - in: query
+          name: newTestNumber
+          type: number
+          description: Enter the new number here.
+      responses:
+        204:
+          description: Success
+          schema:
+            type: object
+    delete:
+      x-ims-anonymous : true
+      description: Use this to send a DELETE call. (Nothing is done to the sent data).
+      operationId: deleteHitMe
+      tags : [ HitMe ]
+      parameters:
+        - in: query
+          name: testNumber
+          type: number
+          description: Enter a number here.
+      responses:
+        204:
+          description: Success
+          schema:
+            type: object
+          

@@ -1,0 +1,8 @@
+# swagger configuration file
+
+# values in the swagger hash are system configuration for swagger
+swagger:
+  mapErrorsToJson: true
+  docEndpoints:
+    raw: /api/mockservice/json
+    ui : /api/mockservice
