@@ -1,3 +1,5 @@
+const CHALK = require('chalk');
+
 function getHealth(req, res) {
     (async(request, response) => {
         console.log(`[${CHALK.blue('GET')}] Healthy!`);
