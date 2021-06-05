@@ -1,37 +1,43 @@
-const CHALK = require('chalk');
+const Logger = require('../../logger/logger');
+const logger = new Logger();
+
+const hitMeMessage = "Got hit!";
+const returnJson = {
+    status: 'got hit'
+}
 
 function getHitMe(req, res) {
     (async(request, response) => {
-        console.log(`[${CHALK.blue('GET')}] Got hit!`);
-        response.status(200).json({status: 'got hit'});
+        logger.api("get",hitMeMessage);
+        response.status(200).json(returnJson);
     }) (req, res);
 }
 
 function postHitMe(req, res) {
     (async(request, response) => {
-        console.log(`[${CHALK.green('POST')}] Got hit!`);
-        response.status(201).json({status: 'got hit'});
+        logger.api("post",hitMeMessage);
+        response.status(201).json(returnJson);
     }) (req, res);
 }
 
 function putHitMe(req, res) {
     (async(request, response) => {
-        console.log(`[${CHALK.keyword('orange')('PUT')}] Got hit!`);
-        response.status(201).json({status: 'got hit'});
+        logger.api("put",hitMeMessage);
+        response.status(201).json(returnJson);
     }) (req, res);
 }
 
 function patchHitMe(req, res) {
     (async(request, response) => {
-        console.log(`[${CHALK.keyword('orange')('PATCH')}] Got hit!`);
-        response.status(201).json({status: 'got hit'});
+        logger.api("patch",hitMeMessage);
+        response.status(201).json(returnJson);
     }) (req, res);
 }
 
 function deleteHitMe(req, res) {
     (async(request, response) => {
-        console.log(`[${CHALK.red('DELETE')}] Got hit!`);
-        response.status(201).json({status: 'got hit'});
+        logger.api("delete",hitMeMessage);
+        response.status(201).json(returnJson);
     }) (req, res);
 }
 

@@ -1,8 +1,9 @@
-const CHALK = require('chalk');
+const Logger = require('../../logger/logger');
+const logger = new Logger();
 
 function getHealth(req, res) {
     (async(request, response) => {
-        console.log(`[${CHALK.blue('GET')}] Healthy!`);
+        logger.api("get","Healthy!");
         response.status(200).json({status: 'OK'});
     }) (req, res);
 }

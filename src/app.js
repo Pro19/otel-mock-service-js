@@ -4,6 +4,8 @@ const express = require('express');
 const http = require('http');
 const bodyParser = require('body-parser');
 const CHALK = require('chalk');
+const Logger = require('./logger/logger');
+const logger = new Logger();
 
 class Application {
     constructor() {
@@ -21,7 +23,8 @@ class Application {
     }
 
     shutdownService() {
-        console.log(CHALK.red(`${CHALK.yellow(">")} Stopping server.`));
+        logger.warn(`Received terminate signal.`)
+        logger.warn(`Application will gracefully shutdown.`);
         process.exit();
     }
 
@@ -33,10 +36,10 @@ class Application {
     run(port) {
         this.expressApp.set('port', port);
         this.server = http.createServer(this.expressApp);
-        console.log(`${CHALK.yellow(">")} Starting server on port ${CHALK.cyan(port)}`);
+        logger.info(`Starting server on port ${CHALK.cyan(port)}.`);
         this.expressAppHandler = this.server.listen(port);
-        console.log(`${CHALK.yellow(">")} Server started.`);
-        console.log(`${CHALK.yellow(">")} Access swagger from here: ${CHALK.green("http://localhost:1234")} OR ${CHALK.green("http://localhost:1234/api/mockservice")}`);
+        logger.info(`Server started.`);
+        logger.info(`Access swagger from here: ${CHALK.green("http://localhost:1234")} OR ${CHALK.green("http://localhost:1234/api/mockservice")}`)
     }
 }
 

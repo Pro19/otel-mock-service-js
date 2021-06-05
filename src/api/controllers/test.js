@@ -1,37 +1,43 @@
-const CHALK = require('chalk');
+const Logger = require('../../logger/logger');
+const logger = new Logger();
+
+const receiveMessage = "Test call received";
+const returnJson = {
+    status: 'okay'
+}
 
 function getTest(req, res) {
     (async(request, response) => {
-        console.log(`[${CHALK.blue('GET')}] Test call received`);
-        response.status(200).json({status: 'okay'});
+        logger.api("get",receiveMessage);
+        response.status(200).json(returnJson);
     }) (req, res);
 }
 
 function postTest(req, res) {
     (async(request, response) => {
-        console.log(`[${CHALK.green('POST')}] Test call received`);
-        response.status(201).json({status: 'okay'});
+        logger.api("post",receiveMessage);
+        response.status(201).json(returnJson);
     }) (req, res);
 }
 
 function putTest(req, res) {
     (async(request, response) => {
-        console.log(`[${CHALK.keyword('orange')('PUT')}] Test call received`);
-        response.status(201).json({status: 'okay'});
+        logger.api("put",receiveMessage);
+        response.status(201).json(returnJson);
     }) (req, res);
 }
 
 function patchTest(req, res) {
     (async(request, response) => {
-        console.log(`[${CHALK.keyword('orange')('PATCH')}] Test call received`);
-        response.status(201).json({status: 'okay'});
+        logger.api("patch",receiveMessage);
+        response.status(201).json(returnJson);
     }) (req, res);
 }
 
 function deleteTest(req, res) {
     (async(request, response) => {
-        console.log(`[${CHALK.red('DELETE')}] Test call received`);
-        response.status(201).json({status: 'okay'});
+        logger.api("delete",receiveMessage);
+        response.status(201).json(returnJson);
     }) (req, res);
 }
 
